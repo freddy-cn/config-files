@@ -1,0 +1,2 @@
+place the Ultisnips folder inside:
+~/.vim/bundle/vim-snippets/
