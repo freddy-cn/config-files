@@ -46,8 +46,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
-" colorschemes
 Plugin 'preservim/nerdcommenter'
+" colorschemes
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'sonph/onehalf'
 Plugin 'jacoborus/tender.vim'
@@ -127,8 +127,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 " ultisnips settings
     " let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
 let g:UltiSnipsExpandTrigger="<TAB>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
 vnoremap ñs y/\V<C-R>=escape(@",'/\')<CR><CR>
 
@@ -162,14 +162,12 @@ inoremap ñq <Esc>
 inoremap ÑQ <Esc>
 nnoremap ññ <Esc>:w<CR><right>
 nnoremap ÑÑ <Esc>:w<CR><right>
-nnoremap qq <Esc>:q<CR>
-nnoremap QQ <Esc>:q!<CR>
-nnoremap qqq <Esc>:wqa<CR>
-nnoremap QQQ <Esc>:qa!<CR>
+nnoremap wq <Esc>:wq<CR>
+nnoremap q! <Esc>:q!<CR>
+nnoremap wqa <Esc>:wqa<CR>
+nnoremap qa! <Esc>:qa!<CR>
 nnoremap tt <Esc>:NERDTreeToggle<CR>
 nnoremap TT <Esc>:NERDTreeToggle<CR>
-nnoremap ñqq <Esc>:q<CR>
-nnoremap ÑQQ <Esc>:q<CR>
 " cycling through tabs and scrolling page up and down:
 noremap <S-K> kkkkk
 noremap <S-J> jjjjj
