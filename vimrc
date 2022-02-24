@@ -23,13 +23,13 @@ set splitright
 set autoread
 set ignorecase
 set updatetime=500
-
+let operating_sys = system("echo $OSTYPE")
 " Inicia  configuración de Vundle ----------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -40,10 +40,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf'
 Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'sheerun/vim-polyglot'
-" Ultisnips engine.
-Plugin 'SirVer/ultisnips'
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
 Plugin 'preservim/nerdcommenter'
@@ -66,6 +62,14 @@ Plugin 'christophermca/meta5'
 " https://github.com/romainl/Apprentice
 " https://github.com/jaredgorski/SpaceCamp
 " https://github.com/tomasr/molokai
+if operating_sys =~ "linux"
+    " Ultisnips engine.
+    Plugin 'SirVer/ultisnips'
+    " Snippets are separated from the engine. Add this if you want them:
+    Plugin 'honza/vim-snippets'
+elseif operating_sys =~ "darwin"
+    " echo "mac"
+endif
 call vundle#end()      
 " Termina configuración de Vundle----------
 
@@ -215,3 +219,37 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 cabbrev sessionmk mks! ~/.vim/sessions/
 cabbrev sessionso source ~/.vim/sessions/
+
+if operating_sys =~ "linux"
+    iabbrev operatingsystem linux
+elseif operating_sys =~ "darwin"
+    iabbrev operatingsystem mac
+endif
+
+function! PhpAbbrev()
+      iabbrev enc json_encode(
+      iabbrev dec json_decode(
+      iabbrev info Log::info(
+      iabbrev jresponse response(<ESC>A->json([])
+endfunction
+function! JsAbbrev()
+      iabbrev clog console.log(
+      iabbrev ctable console.table(
+      iabbrev foreach forEach((elem, i<RIGHT> => {<CR>
+      iabbrev for for(let i = 0; i < length; i++<RIGHT>{<CR>
+      iabbrev getbyid document.getElementById(''
+      iabbrev getbyclass document.getElementsByClassName(''
+      iabbrev doc document
+      iabbrev filter filter((element, index, array<RIGHT> => {<CR>
+      iabbrev map map((element, index, array<RIGHT> => {<CR>
+      iabbrev reduce reduce((previousValue, currentValue, currentIndex, array<RIGHT> => { <RIGHT>, optionalInitialValue
+endfunction
+
+function! SaveSessionAndExit()
+    :mks! ~/.vim/sessions/default.vim
+    :wqa
+endfunction
+
+function! RestoreDefaultSession()
+    :source ~/.vim/sessions/default.vim
+endfunction
