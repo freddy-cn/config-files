@@ -53,6 +53,8 @@ Plugin 'sainnhe/edge'
 Plugin 'itchyny/lightline.vim'
 Plugin 'gilgigilgil/anderson.vim'
 Plugin 'sainnhe/sonokai'
+Plugin 'sainnhe/gruvbox-material'
+Plugin 'srcery-colors/srcery-vim'
 Plugin 'dracula/vim', { 'name': 'dracula' }
 Plugin 'dikiaap/minimalist'
 Plugin 'kyoz/purify', { 'rtp': 'vim' }
@@ -63,10 +65,10 @@ Plugin 'christophermca/meta5'
 " https://github.com/jaredgorski/SpaceCamp
 " https://github.com/tomasr/molokai
 if operating_sys =~ "linux"
-    " Ultisnips engine.
-    Plugin 'SirVer/ultisnips'
-    " Snippets are separated from the engine. Add this if you want them:
-    Plugin 'honza/vim-snippets'
+  " Ultisnips engine.
+  Plugin 'SirVer/ultisnips'
+  " Snippets are separated from the engine. Add this if you want them:
+  Plugin 'honza/vim-snippets'
 elseif operating_sys =~ "darwin"
     " echo "mac"
 endif
@@ -110,7 +112,7 @@ let g:ctrlp_custom_ignore = {
 " default lightline: 'powerline', available: one, PaperColor, solarized, wombat
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'powerline',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
@@ -196,15 +198,18 @@ nmap == <C-W>=
 " miscelaneous
 nmap ñ1 :set foldlevel=1<CR>
 nmap ñ2 :set foldlevel=2<CR>
-nmap MM :nohlsearch<CR>
-nmap mm :nohlsearch<CR>
+nmap ÑM :nohlsearch<CR>
+nmap ñm :nohlsearch<CR>
 nmap ñw <C-W>ww
 nmap ssf :syntax sync fromstart<CR>
+nmap ñ% :buffers<CR>:b
 inoremap ño <C-X><C-O>
 inoremap ÑO <C-X><C-O>
 inoremap ñp <C-X><C-P>
 inoremap ÑP <C-X><C-P>
 vnoremap ñf y/\V<C-R>=escape(@",'/\')<CR><CR>
+nmap ñx ci[x<ESC>
+nmap ñu ci[ <ESC>
 " copy from vim to clipboard
 vnoremap ñc :'<,'>w !xclip -selection clipboard<CR><CR>
 vnoremap ñ <Esc>
@@ -227,22 +232,25 @@ elseif operating_sys =~ "darwin"
 endif
 
 function! PhpAbbrev()
-      iabbrev enc json_encode(
-      iabbrev dec json_decode(
-      iabbrev info Log::info(
-      iabbrev jresponse response(<ESC>A->json([])
+      iabbrev enc-- json_encode(
+      iabbrev dec-- json_decode(
+      iabbrev info-- Log::info(
+      iabbrev jresponse-- response(<ESC>A->json([])
 endfunction
 function! JsAbbrev()
-      iabbrev clog console.log(
-      iabbrev ctable console.table(
-      iabbrev foreach forEach((elem, i<RIGHT> => {<CR>
-      iabbrev for for(let i = 0; i < length; i++<RIGHT>{<CR>
-      iabbrev getbyid document.getElementById(''
-      iabbrev getbyclass document.getElementsByClassName(''
-      iabbrev doc document
-      iabbrev filter filter((element, index, array<RIGHT> => {<CR>
-      iabbrev map map((element, index, array<RIGHT> => {<CR>
-      iabbrev reduce reduce((previousValue, currentValue, currentIndex, array<RIGHT> => { <RIGHT>, optionalInitialValue
+      iabbrev clog-- console.log(
+      iabbrev ctable-- console.table(
+      iabbrev cerror-- console.table(
+      iabbrev foreach-- forEach((elem, i<RIGHT> => {<CR>
+      iabbrev for-- for(let i = 0; i < length; i++<RIGHT>{<CR>
+      iabbrev getbyid-- document.getElementById(''
+      iabbrev getbyname-- document.getElementsByName(''
+      iabbrev getbyclass-- document.getElementsByClassName(''
+      iabbrev addlistener-- element.addEventListener('click', function(evt){<ESC>$r;<LEFT><LEFT>i
+      iabbrev doc-- document
+      iabbrev filter-- filter((element, index, array<RIGHT> => {<CR>
+      iabbrev map-- map((element, index, array<RIGHT> => {<CR>
+      iabbrev reduce-- reduce((previousValue, currentValue, currentIndex, array<RIGHT> => { <CR>, optionalInitialValue
 endfunction
 
 function! SaveSessionAndExit()
