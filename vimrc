@@ -42,6 +42,7 @@ Plugin 'leafOfTree/vim-vue-plugin'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
+Plugin 'airblade/vim-gitgutter'
 " colorschemes
 Plugin 'preservim/nerdcommenter'
 Plugin 'NLKNguyen/papercolor-theme'
@@ -68,13 +69,14 @@ if operating_sys =~ "linux"
     " Snippets are separated from the engine. Add this if you want them:
     Plugin 'honza/vim-snippets'
 elseif operating_sys =~ "darwin"
-    " echo "mac"
+    echo "mac"
+    vnoremap ñc "+y
 endif
 call vundle#end()      
 " Termina configuración de Vundle----------
 
 set termguicolors
-colorscheme purify 
+colorscheme onedark 
 " molokai, spacecamp, spacecamp_lite
 " apprentice, iceberg, lucid, purify
 
@@ -208,7 +210,6 @@ inoremap ñp <C-X><C-P>
 inoremap ÑP <C-X><C-P>
 vnoremap ñf y/\V<C-R>=escape(@",'/\')<CR><CR>
 " copy from vim to clipboard
-vnoremap ñc :'<,'>w !xclip -selection clipboard<CR><CR>
 vnoremap ñ <Esc>
 vnoremap ñn :norm _
 inoremap "" ""<left>
