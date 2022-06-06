@@ -76,7 +76,7 @@ call vundle#end()
 " Termina configuración de Vundle----------
 
 set termguicolors
-colorscheme purify 
+colorscheme srcery
 " molokai, spacecamp, spacecamp_lite
 " apprentice, iceberg, lucid, purify
 
