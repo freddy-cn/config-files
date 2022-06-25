@@ -158,9 +158,9 @@ elseif operating_sys =~ "darwin"
 endif
 
 if has('nvim')
-  " nnoremap ñe <cmd>Telescope find_files<cr>
-  nnoremap ñe <cmd>Telescope git_files<cr>
-  nnoremap ñg <cmd>Telescope live_grep<cr>
+  nnoremap ñe <cmd>Telescope find_files<cr>
+  nnoremap ñr <cmd>Telescope git_files<cr>
+  " nnoremap ñg <cmd>Telescope live_grep<cr>
   nnoremap ñt <cmd>Telescope buffers<cr>
   nnoremap ñh <cmd>Telescope help_tags<cr>
 else
