@@ -10,7 +10,7 @@
 # here, since multilingual X sessions would not work properly if LANG is over-
 # ridden in every subshell.
 alias php73="/opt/lampp/bin/php"
-alias v="~/Aplicaciones/nvim.appimage"
+alias v="~/Aplicaciones/nightly-nvim.appimage"
 alias vimrc="vim ~/Workspace/config_files/vimrc"
 alias editsnips="vim ~/Workspace/config_files/UltiSnips/"
 

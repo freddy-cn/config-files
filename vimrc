@@ -1,3 +1,5 @@
+" - GLOBAL SETTINGS - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+"   
 set number
 set nocompatible              
 set tabstop=4
@@ -24,15 +26,31 @@ set autoread
 set ignorecase
 set updatetime=500
 let operating_sys = system("echo $OSTYPE")
-" Inicia  configuración de Vundle ----------
+
+
+" - VUNDLE PLUGINS  - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+"
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-" call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" enable plugins according machine-specific config 
+if operating_sys =~ "linux"
+  Plugin 'SirVer/ultisnips'
+  Plugin 'honza/vim-snippets'
+elseif operating_sys =~ "darwin"
+  " echo "mac"
+endif
+
+" neovim exclusive plugins
+if has('nvim')
+  Plugin 'nvim-lua/plenary.nvim'
+  Plugin 'nvim-telescope/telescope.nvim'
+endif
+
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
@@ -43,6 +61,7 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
 Plugin 'preservim/nerdcommenter'
+
 " colorschemes
 Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'sonph/onehalf'
@@ -64,16 +83,7 @@ Plugin 'christophermca/meta5'
 " https://github.com/romainl/Apprentice
 " https://github.com/jaredgorski/SpaceCamp
 " https://github.com/tomasr/molokai
-if operating_sys =~ "linux"
-  " Ultisnips engine.
-  Plugin 'SirVer/ultisnips'
-  " Snippets are separated from the engine. Add this if you want them:
-  Plugin 'honza/vim-snippets'
-elseif operating_sys =~ "darwin"
-    " echo "mac"
-endif
 call vundle#end()      
-" Termina configuración de Vundle----------
 
 set termguicolors
 colorscheme srcery
@@ -85,7 +95,7 @@ let g:netrw_liststyle = 3
 let g:netrw_winsize = 17
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:user_emmet_leader_key=','
-"au BufNewFile,BufRead *.vue setf vue
+
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 " transparent bg
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
@@ -109,14 +119,16 @@ let g:ctrlp_custom_ignore = {
   \ }
   
 " LIGHTLINE CONFIGURATION
-" default lightline: 'powerline', available: one, PaperColor, solarized, wombat
+" default lightline: 'powerline', one, PaperColor, solarized,
+" wombat, landscape
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'powerline',
+      \ 'colorscheme': 'landscape',
       \ 'component_function': {
       \   'filename': 'LightlineFilename',
       \ },
       \ }
+
 function! LightlineFilename()
   return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
         \ &filetype ==# 'unite' ? unite#get_status_string() :
@@ -131,13 +143,33 @@ let g:indentLine_enabled = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " ultisnips settings
-    " let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
+" let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
 let g:UltiSnipsExpandTrigger="<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
-vnoremap ñs y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" - MAPINGS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+"
+if operating_sys =~ "linux"
+    iabbrev operatingsystem linux
+elseif operating_sys =~ "darwin"
+    iabbrev operatingsystem mac
+endif
+
+if has('nvim')
+  " nnoremap ñe <cmd>Telescope find_files<cr>
+  nnoremap ñe <cmd>Telescope git_files<cr>
+  nnoremap ñg <cmd>Telescope live_grep<cr>
+  nnoremap ñt <cmd>Telescope buffers<cr>
+  nnoremap ñh <cmd>Telescope help_tags<cr>
+else
+  noremap ñe :FZF<CR>
+  noremap ñt :buffers<CR>:b 
+endif
+
+
+vnoremap ñs y/\V<C-R>=escape(@",'/\')<CR><CR>
 nmap <F5> :NERDTreeToggle<CR>
 " moving
 nmap <S-H> T <left>
@@ -189,8 +221,6 @@ noremap <Space> i<Space><Esc><right>
 noremap ñb ?
 noremap ñv :vs<CR>
 noremap ñh :split<CR>
-noremap ñe :FZF<CR>
-noremap ÑE :FZF<CR>
 " resize windows
 nmap -  <C-W><
 nmap +  <C-W>>
@@ -202,7 +232,6 @@ nmap ÑM :nohlsearch<CR>
 nmap ñm :nohlsearch<CR>
 nmap ñw <C-W>ww
 nmap ssf :syntax sync fromstart<CR>
-nmap ñ% :buffers<CR>:b
 inoremap ño <C-X><C-O>
 inoremap ÑO <C-X><C-O>
 inoremap ñp <C-X><C-P>
@@ -210,6 +239,7 @@ inoremap ÑP <C-X><C-P>
 vnoremap ñf y/\V<C-R>=escape(@",'/\')<CR><CR>
 nmap ñx ci[x<ESC>
 nmap ñu ci[ <ESC>
+nmap <CR> o<ESC>
 " copy from vim to clipboard
 vnoremap ñc :'<,'>w !xclip -selection clipboard<CR><CR>
 vnoremap ñ <Esc>
@@ -225,12 +255,9 @@ inoremap {;<CR> {<CR>};<ESC>O
 cabbrev sessionmk mks! ~/.vim/sessions/
 cabbrev sessionso source ~/.vim/sessions/
 
-if operating_sys =~ "linux"
-    iabbrev operatingsystem linux
-elseif operating_sys =~ "darwin"
-    iabbrev operatingsystem mac
-endif
 
+
+" - FUNCTIONS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 function! PhpAbbrev()
       iabbrev enc-- json_encode(
       iabbrev dec-- json_decode(

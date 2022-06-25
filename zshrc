@@ -91,7 +91,6 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -107,9 +106,13 @@ alias php73="/opt/lampp/bin/php"
 alias composer73="/opt/lampp/bin/php /usr/local/bin/composer"
 alias atom="~/Aplicaciones/atom/atom"
 alias python="/usr/bin/python3.9"
-alias v="~/Aplicaciones/nvim.appimage"
+alias v="~/Aplicaciones/nightly-nvim.appimage"
 alias vimrc="vim ~/Workspace/config_files/vimrc"
 alias editsnips="vim ~/Workspace/config_files/UltiSnips/"
+alias lst="clear && tree -L 1"
+alias lst2="clear && tree -L 2"
+alias lst3="clear && tree -L 3"
+python="/usr/bin/python3.9"
 
 
 export PATH="$HOME/.config/composer/vendor/bin:$PATH"
