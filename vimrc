@@ -4,7 +4,7 @@ set number
 set nocompatible              
 set tabstop=4
 set expandtab
-set shiftwidth=4
+set shiftwidth=4 "override if not working
 set smartindent
 set nowrap
 set mouse=a
@@ -17,7 +17,7 @@ syntax sync fromstart
 set redrawtime=5000
 set cursorline  
 " set cursorcolumn
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 set hlsearch
 set incsearch
 set splitbelow
@@ -26,6 +26,9 @@ set autoread
 set ignorecase
 set updatetime=500
 let operating_sys = system("echo $OSTYPE")
+
+
+
 
 
 " - VUNDLE PLUGINS  - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -49,8 +52,17 @@ endif
 if has('nvim')
   Plugin 'nvim-lua/plenary.nvim'
   Plugin 'nvim-telescope/telescope.nvim'
+  Plugin 'williamboman/mason.nvim'
+  Plugin 'williamboman/mason-lspconfig.nvim'
+  Plugin 'neovim/nvim-lspconfig'
+  Plugin 'hrsh7th/cmp-nvim-lsp'
+  Plugin 'hrsh7th/cmp-buffer'
+  Plugin 'hrsh7th/cmp-path'
+  Plugin 'hrsh7th/cmp-cmdline'
+  Plugin 'hrsh7th/nvim-cmp'
 endif
 
+Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
@@ -61,6 +73,8 @@ Plugin 'sheerun/vim-polyglot'
 Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
 Plugin 'preservim/nerdcommenter'
+Plugin 'ludovicchabant/vim-gutentags'
+
 
 " colorschemes
 Plugin 'NLKNguyen/papercolor-theme'
@@ -85,6 +99,14 @@ Plugin 'christophermca/meta5'
 " https://github.com/tomasr/molokai
 call vundle#end()      
 
+
+if has('nvim')
+    lua require("mason-config")
+    lua require('lspservers')
+endif
+
+set completeopt=menu,menuone,noselect
+
 set termguicolors
 colorscheme srcery
 " molokai, spacecamp, spacecamp_lite
@@ -92,9 +114,10 @@ colorscheme srcery
 
 filetype plugin indent on   
 let g:netrw_liststyle = 3
-let g:netrw_winsize = 17
+let g:netrw_winsize = 20
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:user_emmet_leader_key=','
+highlight Pmenu guibg=black 
 
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 " transparent bg
@@ -140,7 +163,13 @@ let g:unite_force_overwrite_statusline = 0
 let g:vimfiler_force_overwrite_statusline = 0
 let g:vimshell_force_overwrite_statusline = 0
 let g:indentLine_enabled = 1
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_char_list = ['|', '¦', '┆', '┊', ':']
+
+" supertab
+let g:SuperTabCrMapping=1
+let g:SuperTabMappingForward='<s-tab>'
+let g:SuperTabMappingBackward='<tab>'
+
 
 " ultisnips settings
 " let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
@@ -148,6 +177,9 @@ let g:UltiSnipsExpandTrigger="<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<c-l>"
 let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 
+" gutentags settings
+let g:gutentags_ctags_executable="universal-ctags"
+let g:gutentags_enabled=1
 
 " - MAPINGS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 "
@@ -158,11 +190,11 @@ elseif operating_sys =~ "darwin"
 endif
 
 if has('nvim')
-  nnoremap ñe <cmd>Telescope find_files<cr>
-  nnoremap ñr <cmd>Telescope git_files<cr>
+  nnoremap ñr <cmd>Telescope find_files<cr>
+  nnoremap ñe <cmd>Telescope git_files<cr>
   " nnoremap ñg <cmd>Telescope live_grep<cr>
   nnoremap ñt <cmd>Telescope buffers<cr>
-  nnoremap ñh <cmd>Telescope help_tags<cr>
+  " nnoremap ñh <cmd>Telescope help_tags<cr>
 else
   noremap ñe :FZF<CR>
   noremap ñt :buffers<CR>:b 
@@ -199,26 +231,17 @@ inoremap Ñ<Space> <CR>
 inoremap ñq <Esc>
 inoremap ÑQ <Esc>
 nnoremap ññ <Esc>:w<CR><right>
-nnoremap ÑÑ <Esc>:w<CR><right>
-nnoremap wq <Esc>:wq<CR>
 nnoremap q! <Esc>:q!<CR>
-nnoremap wqa <Esc>:wqa<CR>
 nnoremap qa! <Esc>:qa!<CR>
 nnoremap tt <Esc>:NERDTreeToggle<CR>
-nnoremap TT <Esc>:NERDTreeToggle<CR>
 " cycling through tabs and scrolling page up and down:
 noremap <S-K> kkkkk
 noremap <S-J> jjjjj
-noremap ñh gT 
-noremap ñl gt
-noremap ÑH gT 
-noremap ÑL gt
-noremap ñF ?
 noremap ñf /
+noremap ñb ?
 noremap ñg *
 noremap ñG #
 noremap <Space> i<Space><Esc><right>
-noremap ñb ?
 noremap ñv :vs<CR>
 noremap ñh :split<CR>
 " resize windows
@@ -228,17 +251,13 @@ nmap == <C-W>=
 " miscelaneous
 nmap ñ1 :set foldlevel=1<CR>
 nmap ñ2 :set foldlevel=2<CR>
-nmap ÑM :nohlsearch<CR>
 nmap ñm :nohlsearch<CR>
+nmap ñj <C-D>
+nmap ñk <C-U>
 nmap ñw <C-W>ww
 nmap ssf :syntax sync fromstart<CR>
-inoremap ño <C-X><C-O>
-inoremap ÑO <C-X><C-O>
-inoremap ñp <C-X><C-P>
-inoremap ÑP <C-X><C-P>
-vnoremap ñf y/\V<C-R>=escape(@",'/\')<CR><CR>
-nmap ñx ci[x<ESC>
-nmap ñu ci[ <ESC>
+inoremap ñm <C-X><C-O>
+inoremap ñn <C-X><C-P>
 nmap <CR> o<ESC>
 " copy from vim to clipboard
 vnoremap ñc :'<,'>w !xclip -selection clipboard<CR><CR>

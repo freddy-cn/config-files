@@ -1,0 +1,102 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	//
+"	vimrc	/^vmap " S"$/;"	m
+""	vimrc	/^inoremap "" ""<left>$/;"	m
+'	vimrc	/^vmap ' S'$/;"	m
+''	vimrc	/^inoremap '' ''<left>$/;"	m
+(	vimrc	/^inoremap ( ()<left>$/;"	m
+(	vimrc	/^vmap ( S($/;"	m
++	vimrc	/^nmap +  <C-W>>$/;"	m
+-	vimrc	/^nmap -  <C-W><$/;"	m
+<C-H>	vimrc	/^imap <C-H> <left>$/;"	m
+<C-J>	vimrc	/^imap <C-J> <down>$/;"	m
+<C-J>	vimrc	/^nmap <C-J> :join<CR>$/;"	m
+<C-K>	vimrc	/^imap <C-K> <up>$/;"	m
+<C-K>	vimrc	/^nmap <C-K> i<CR><ESC>k\$$/;"	m
+<C-L>	vimrc	/^imap <C-L> <right>$/;"	m
+<CR>	vimrc	/^nmap <CR> o<ESC>$/;"	m
+<F5>	vimrc	/^nmap <F5> :NERDTreeToggle<CR>$/;"	m
+<S-H>	vimrc	/^nmap <S-H> T <left>$/;"	m
+<S-J>	vimrc	/^noremap <S-J> jjjjj$/;"	m
+<S-K>	vimrc	/^noremap <S-K> kkkkk$/;"	m
+<S-L>	vimrc	/^nmap <S-L> t <right>$/;"	m
+<Space>	vimrc	/^noremap <Space> i<Space><Esc><right>$/;"	m
+==	vimrc	/^nmap == <C-W>=$/;"	m
+FILES=	setlinks.sh	/^FILES=()$/;"	f
+JsAbbrev	vimrc	/^function! JsAbbrev()$/;"	f
+LightlineFilename	vimrc	/^function! LightlineFilename()$/;"	f
+PhpAbbrev	vimrc	/^function! PhpAbbrev()$/;"	f
+RestoreDefaultSession	vimrc	/^function! RestoreDefaultSession()$/;"	f
+SaveSessionAndExit	vimrc	/^function! SaveSessionAndExit()$/;"	f
+[	vimrc	/^inoremap [ []<left>$/;"	m
+[	vimrc	/^vmap [ S[$/;"	m
+fg	tmux.conf	/^set -g pane-active-border-style 'fg=colour4'$/;"	k
+fg	tmux.conf	/^set -g pane-border-style 'fg=colour238'$/;"	k
+fg	tmux.conf	/^setw -g mode-style 'fg=colour1 bg=colour18 bold'$/;"	k
+g:SuperTabCrMapping	vimrc	/^let g:SuperTabCrMapping=1$/;"	v
+g:SuperTabMappingBackward	vimrc	/^let g:SuperTabMappingBackward='<tab>'$/;"	v
+g:SuperTabMappingForward	vimrc	/^let g:SuperTabMappingForward='<s-tab>'$/;"	v
+g:UltiSnipsExpandTrigger	vimrc	/^let g:UltiSnipsExpandTrigger="<TAB>"$/;"	v
+g:UltiSnipsJumpBackwardTrigger	vimrc	/^let g:UltiSnipsJumpBackwardTrigger="<c-h>"$/;"	v
+g:UltiSnipsJumpForwardTrigger	vimrc	/^let g:UltiSnipsJumpForwardTrigger="<c-l>"$/;"	v
+g:ctrlp_custom_ignore	vimrc	/^let g:ctrlp_custom_ignore = {$/;"	v
+g:gutentags_ctags_executable	vimrc	/^let g:gutentags_ctags_executable="universal-ctags"$/;"	v
+g:gutentags_enabled	vimrc	/^let g:gutentags_enabled=1$/;"	v
+g:indentLine_char_list	vimrc	/^let g:indentLine_char_list = ['|', '¦', '┆', '┊', ':']$/;"	v
+g:indentLine_enabled	vimrc	/^let g:indentLine_enabled = 1$/;"	v
+g:lightline	vimrc	/^let g:lightline = {$/;"	v
+g:netrw_bufsettings	vimrc	/^let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'$/;"	v
+g:netrw_liststyle	vimrc	/^let g:netrw_liststyle = 3$/;"	v
+g:netrw_winsize	vimrc	/^let g:netrw_winsize = 20$/;"	v
+g:unite_force_overwrite_statusline	vimrc	/^let g:unite_force_overwrite_statusline = 0$/;"	v
+g:user_emmet_leader_key	vimrc	/^let g:user_emmet_leader_key=','$/;"	v
+g:vim_vue_plugin_config	vimrc	/^let g:vim_vue_plugin_config = {$/;"	v
+g:vimfiler_force_overwrite_statusline	vimrc	/^let g:vimfiler_force_overwrite_statusline = 0$/;"	v
+g:vimshell_force_overwrite_statusline	vimrc	/^let g:vimshell_force_overwrite_statusline = 0$/;"	v
+on_attach	lspservers.lua	/^    on_attach = function()$/;"	f
+operating_sys	vimrc	/^let operating_sys = system("echo $OSTYPE")$/;"	v
+q!	vimrc	/^nnoremap q! <Esc>:q!<CR>$/;"	m
+qa!	vimrc	/^nnoremap qa! <Esc>:qa!<CR>$/;"	m
+ssf	vimrc	/^nmap ssf :syntax sync fromstart<CR>$/;"	m
+tc	vimrc	/^vmap tc \\cc$/;"	m
+ts	vimrc	/^vmap ts \\cs$/;"	m
+tt	vimrc	/^nnoremap tt <Esc>:NERDTreeToggle<CR>$/;"	m
+tu	vimrc	/^vmap tu \\cu$/;"	m
+{	vimrc	/^inoremap { {}<left>$/;"	m
+{;<CR>	vimrc	/^inoremap {;<CR> {<CR>};<ESC>O$/;"	m
+{<CR>	vimrc	/^inoremap {<CR> {<CR>}<ESC>O$/;"	m
+Ñ<Space>	vimrc	/^inoremap Ñ<Space> <CR>$/;"	m
+ÑQ	vimrc	/^inoremap ÑQ <Esc>$/;"	m
+ÑÑ	vimrc	/^inoremap ÑÑ <Esc>:w<CR><right>$/;"	m
+ñ	vimrc	/^vnoremap ñ <Esc>$/;"	m
+ñ1	vimrc	/^nmap ñ1 :set foldlevel=1<CR>$/;"	m
+ñ2	vimrc	/^nmap ñ2 :set foldlevel=2<CR>$/;"	m
+ñ<Space>	vimrc	/^inoremap ñ<Space> <CR>$/;"	m
+ñG	vimrc	/^noremap ñG #$/;"	m
+ñb	vimrc	/^noremap ñb ?$/;"	m
+ñc	vimrc	/^vnoremap ñc :'<,'>w !xclip -selection clipboard<CR><CR>$/;"	m
+ñe	vimrc	/^  nnoremap ñe <cmd>Telescope git_files<cr>$/;"	m
+ñe	vimrc	/^  noremap ñe :FZF<CR>$/;"	m
+ñf	vimrc	/^noremap ñf \/$/;"	m
+ñg	vimrc	/^noremap ñg *$/;"	m
+ñh	vimrc	/^noremap ñh :split<CR>$/;"	m
+ñj	vimrc	/^nmap ñj <C-D>$/;"	m
+ñk	vimrc	/^nmap ñk <C-U>$/;"	m
+ñm	vimrc	/^inoremap ñm <C-X><C-O>$/;"	m
+ñm	vimrc	/^nmap ñm :nohlsearch<CR>$/;"	m
+ñn	vimrc	/^inoremap ñn <C-X><C-P>$/;"	m
+ñn	vimrc	/^vnoremap ñn :norm _$/;"	m
+ñq	vimrc	/^inoremap ñq <Esc>$/;"	m
+ñr	vimrc	/^  nnoremap ñr <cmd>Telescope find_files<cr>$/;"	m
+ñs	vimrc	/^vnoremap ñs y\/\\V<C-R>=escape(@",'\/\\')<CR><CR>$/;"	m
+ñt	vimrc	/^  nnoremap ñt <cmd>Telescope buffers<cr>$/;"	m
+ñt	vimrc	/^  noremap ñt :buffers<CR>:b $/;"	m
+ñv	vimrc	/^noremap ñv :vs<CR>$/;"	m
+ñw	vimrc	/^nmap ñw <C-W>ww$/;"	m
+ññ	vimrc	/^inoremap ññ <Esc>:w<CR><right>$/;"	m
+ññ	vimrc	/^nnoremap ññ <Esc>:w<CR><right>$/;"	m
