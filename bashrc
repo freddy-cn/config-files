@@ -27,6 +27,7 @@ PS1='\[\e[33m\]❯ \[\e[m\]\[\e[36;1m\]\W/\[\e[m\]\[\e[33m\]$(git_branch)\[\e[m\
 python="/usr/bin/python3.9"
 export PATH="~/.config/composer/vendor/bin:$PATH" 
 export EDITOR=vim
+export TERM=xterm-256color
 export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
 export VIMDIR="~/.vim/"
 export CHROME_EXECUTABLE="/usr/bin/chromium"
