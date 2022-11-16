@@ -74,6 +74,7 @@ Plugin 'psliwka/vim-smoothie'
 Plugin 'Yggdroot/indentLine'
 Plugin 'preservim/nerdcommenter'
 Plugin 'ludovicchabant/vim-gutentags'
+Plugin 'ryanoasis/vim-devicons'
 
 
 " colorschemes
@@ -180,6 +181,10 @@ let g:UltiSnipsJumpBackwardTrigger="<c-h>"
 " gutentags settings
 let g:gutentags_ctags_executable="universal-ctags"
 let g:gutentags_enabled=1
+
+" devicons config
+" adding to vim-airline's tabline
+let g:webdevicons_enable_airline_tabline = 1
 
 " - MAPINGS - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 "

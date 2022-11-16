@@ -58,6 +58,7 @@ g:user_emmet_leader_key	vimrc	/^let g:user_emmet_leader_key=','$/;"	v
 g:vim_vue_plugin_config	vimrc	/^let g:vim_vue_plugin_config = {$/;"	v
 g:vimfiler_force_overwrite_statusline	vimrc	/^let g:vimfiler_force_overwrite_statusline = 0$/;"	v
 g:vimshell_force_overwrite_statusline	vimrc	/^let g:vimshell_force_overwrite_statusline = 0$/;"	v
+g:webdevicons_enable_airline_tabline	vimrc	/^let g:webdevicons_enable_airline_tabline = 1$/;"	v
 on_attach	lspservers.lua	/^    on_attach = function()$/;"	f
 operating_sys	vimrc	/^let operating_sys = system("echo $OSTYPE")$/;"	v
 q!	vimrc	/^nnoremap q! <Esc>:q!<CR>$/;"	m
